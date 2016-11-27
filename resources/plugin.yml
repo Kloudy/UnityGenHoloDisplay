@@ -1,0 +1,23 @@
+name: UnityGenHoloDisplay
+main: com.antarescraft.kloudy.unitygenholodisplay.UnityGenHoloDisplay
+version: 1.0
+author: Kloudy
+website: www.antarescraft.com
+
+depend: [HoloGUIApi]
+
+commands:
+  ugd:
+    description: used to define commands for the UnityGenHoloDisplay plugin
+
+permissions:
+
+  unitygen.admin:
+    description: Allows a player to use UnityGenHoloDisplay admin commands
+    default: op
+    children:
+      unitygen.display: true
+
+  unitygen.display:
+    description: Allows a player see open the gui display
+    default: true

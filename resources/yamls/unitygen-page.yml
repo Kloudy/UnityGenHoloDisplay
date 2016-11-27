@@ -1,0 +1,65 @@
+unitygen-page:
+  components:
+
+    unitygen-btn-template:
+      type: "item"
+      item-id: AIR
+      always-show-label: true
+      clickable: true
+      hidden: true
+      onclick-sound: "UI_BUTTON_CLICK"
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      position:
+        x: 0
+        y: 0
+
+    next-page-btn:
+      type: "button"
+      hidden: true
+      icon: "next-btn.png"
+      label: "&a&lNEXT PAGE"
+      always-show-label: true
+      onclick-sound: "UI_BUTTON_CLICK"
+      symmetrical: true
+      mini: true
+      position:
+        x: 1.2
+        y: -0.1
+
+    prev-page-btn:
+      type: "button"
+      hidden: true
+      icon: "back.png"
+      mini: true
+      symmetrical: true
+      label: "&a&lPREV PAGE"
+      always-show-label: true
+      onclick-sound: "UI_BUTTON_CLICK"
+      position:
+        x: -1.2
+        y: -0.1
+
+    page-label:
+      type: "label"
+      hidden: true
+      label-disance: 8
+      text:
+        - "&lPage: $model.page();/$model.totalPages();"
+      position:
+        x: 0.1
+        y: 0.55
+
+    close-btn:
+      type: "button"
+      mini: true
+      label: "&lClose Menu"
+      symmetrical: true
+      icon: "x-red.gif"
+      onclick: "ugd close"
+      onclick-sound: "UI_BUTTON_CLICK"
+      position:
+        x: 1.2
+        y: 0.6
