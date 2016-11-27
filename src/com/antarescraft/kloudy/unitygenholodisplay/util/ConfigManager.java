@@ -1,4 +1,4 @@
-package com.antarescraft.kloudy.unitygen.util;
+package com.antarescraft.kloudy.unitygenholodisplay.util;
 
 import org.bukkit.configuration.file.FileConfiguration;
 

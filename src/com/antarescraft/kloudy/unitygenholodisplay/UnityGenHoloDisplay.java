@@ -1,8 +1,8 @@
 package com.antarescraft.kloudy.unitygenholodisplay;
 
 import com.antarescraft.kloudy.hologuiapi.HoloGUIPlugin;
-import com.antarescraft.kloudy.unitygen.util.ConfigManager;
 import com.antarescraft.kloudy.unitygenholodisplay.events.CommandEvent;
+import com.antarescraft.kloudy.unitygenholodisplay.util.ConfigManager;
 
 public class UnityGenHoloDisplay extends HoloGUIPlugin
 {
