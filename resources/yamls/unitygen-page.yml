@@ -1,13 +1,40 @@
 unitygen-page:
   components:
 
+    unity-gen-logo:
+      type: "image"
+      width: 75
+      height: 20
+      image-src: "unitygen-logo.gif"
+      position:
+        x: 0.1
+        y: 1.3
+
+    instructions-label:
+      type: "label"
+      label-distance: 8
+      text:
+        - "&6&lClick a UnitGen block in the list to teleport to its location."
+      position:
+        x: 0.1
+        y: 0.7
+
+    hover-label-template:
+      type: "label"
+      hidden: true
+      text:
+        - ""
+      position:
+        x: 0
+        y: 0
+
     unitygen-btn-template:
       type: "item"
       item-id: AIR
       always-show-label: true
       clickable: true
       hidden: true
-      onclick-sound: "UI_BUTTON_CLICK"
+      onclick-sound: "BLOCK_PORTAL_TRAVEL"
       rotation:
         x: 0
         y: 0

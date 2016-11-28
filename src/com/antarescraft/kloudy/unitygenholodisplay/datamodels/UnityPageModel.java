@@ -3,8 +3,11 @@ package com.antarescraft.kloudy.unitygenholodisplay.datamodels;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.antarescraft.kloudy.hologuiapi.handlers.HoverHandler;
+import com.antarescraft.kloudy.hologuiapi.handlers.HoverOutHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -34,6 +37,7 @@ public class UnityPageModel extends PlayerGUIPageModel
 	private int totalPages;
 	
 	private ItemButtonComponent genBtnTemplate;//clones of this component are used to create each UnityGen button
+	private LabelComponent hoverLabelTemplate;//clones of this component are used to create each UnitGen button label
 	private ButtonComponent nextPageBtn;
 	private ButtonComponent prevPageBtn;
 	private LabelComponent pageLabel;
@@ -45,6 +49,7 @@ public class UnityPageModel extends PlayerGUIPageModel
 		playerUnityGenBtns = new ArrayList<ItemButtonComponent>();
 		
 		genBtnTemplate = (ItemButtonComponent)guiPage.getComponent("unitygen-btn-template");
+		hoverLabelTemplate = (LabelComponent)guiPage.getComponent("hover-label-template");
 		nextPageBtn = (ButtonComponent)guiPage.getComponent("next-page-btn");
 		prevPageBtn = (ButtonComponent)guiPage.getComponent("prev-page-btn");
 		pageLabel = (LabelComponent)guiPage.getComponent("page-label");
@@ -89,6 +94,8 @@ public class UnityPageModel extends PlayerGUIPageModel
 			public void onPageLoad(PlayerGUIPage _playerGUIPage)
 			{
 				playerGUIPage = _playerGUIPage;
+
+				player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1);
 				
 				//parse player UnityGen strings
 				List<String> playerGenStrings = UnityGenAPI.getPlayerGens(player.getUniqueId());
@@ -98,15 +105,15 @@ public class UnityPageModel extends PlayerGUIPageModel
 					String unityGenString = playerGenStrings.get(i);
 					String[] unityGenTokens = unityGenString.split(",");
 					
-					World world = Bukkit.getWorld(unityGenTokens[0]);
-					int x = Integer.parseInt(unityGenTokens[1]);
-					int y = Integer.parseInt(unityGenTokens[2]);
-					int z = Integer.parseInt(unityGenTokens[3]);
+					final World world = Bukkit.getWorld(unityGenTokens[0]);
+					final int x = Integer.parseInt(unityGenTokens[1]);
+					final int y = Integer.parseInt(unityGenTokens[2]);
+					final int z = Integer.parseInt(unityGenTokens[3]);
 					final Location unityGenLocation = new Location(world, x, y, z);
 					
 					String unityGenName = unityGenTokens[4];
 					
-					ItemButtonComponent unityGenBtn = genBtnTemplate.clone();
+					final ItemButtonComponent unityGenBtn = genBtnTemplate.clone();
 					unityGenBtn.setId("unity-btn-" + i);
 					unityGenBtn.setLabel(ChatColor.GOLD + "" + ChatColor.BOLD + unityGenName);
 					unityGenBtn.setItem(new ItemStack(unityGenLocation.getBlock().getType()));
@@ -124,6 +131,38 @@ public class UnityPageModel extends PlayerGUIPageModel
 							player.teleport(tpLocation);
 							
 							player.sendMessage(teleportMessage);
+						}
+					});
+
+					//UnityGen button hover handler
+					unityGenBtn.registerHoverHandler(player, new HoverHandler()
+					{
+						@Override
+						public void onHover()
+						{
+							player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 0.5f, 1);
+
+							ComponentPosition btnPosition = unityGenBtn.getPosition();
+							ComponentPosition labelPosition = new ComponentPosition(btnPosition.getX(), btnPosition.getY() - 0.22);
+							String[] text = new String[]{ String.format("%s: (%d, %d, %d)", world.getName(), x, y, z) };
+
+							LabelComponent infoLabel = hoverLabelTemplate.clone();
+							infoLabel.setId(unityGenBtn.getId() + "-label");
+							infoLabel.setPosition(labelPosition);
+							infoLabel.setLines(text);
+							infoLabel.setLabelDistance(4);
+
+							playerGUIPage.renderComponent(infoLabel);
+						}
+					});
+
+					//UnityGen button hover out handler
+					unityGenBtn.registerHoverOutHandler(player, new HoverOutHandler()
+					{
+						@Override
+						public void onHoverOut()
+						{
+							playerGUIPage.removeComponent( unityGenBtn.getId() + "-label");
 						}
 					});
 
