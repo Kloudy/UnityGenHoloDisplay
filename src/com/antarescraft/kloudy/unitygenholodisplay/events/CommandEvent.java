@@ -44,12 +44,12 @@ public class CommandEvent implements CommandExecutor
 	{
 		Player player = (Player)sender;
 				
-		UnityPageModel model = new UnityPageModel(plugin, plugin.getGUIPage("unitygen-page"), player, plugin.getConfigManager().getTeleportMessage());
+		UnityPageModel model = new UnityPageModel(plugin, plugin.getGUIPage("unitygen-page"), player, plugin.getConfigManager().getTeleportMessage(), plugin.getConfigManager().getNoGensMessage());
 		plugin.getHoloGUIApi().openGUIPage(plugin, player, model);
 	}
 	
 	@CommandHandler(description = "Closes the UnityGen HoloGUI menu", 
-			mustBePlayer = false, permission = "unitygen.display", subcommands = "close")
+			mustBePlayer = true, permission = "unitygen.display", subcommands = "close")
 	public void closeDisplay(CommandSender sender, String[] args)
 	{
 		Player player = (Player)sender;

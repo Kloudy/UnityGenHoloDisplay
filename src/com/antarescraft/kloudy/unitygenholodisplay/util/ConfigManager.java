@@ -12,6 +12,7 @@ public class ConfigManager
 	private UnityGenHoloDisplay plugin;
 	
 	private String teleportMessage;
+	private String noGensMessage;
 	
 	public ConfigManager(UnityGenHoloDisplay plugin)
 	{
@@ -27,7 +28,8 @@ public class ConfigManager
 	{
 		FileConfiguration root = plugin.getConfig();
 		
-		teleportMessage = root.getString("teleport-message");
+		teleportMessage = root.getString("teleport-message", "");
+		noGensMessage = root.getString("no-unity-gens-msg", "");
 	}
 	
 	/*
@@ -38,4 +40,5 @@ public class ConfigManager
 	{
 		return teleportMessage;
 	}
+	public String getNoGensMessage(){ return noGensMessage; }
 }

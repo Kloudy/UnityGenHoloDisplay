@@ -35,19 +35,21 @@ public class UnityPageModel extends PlayerGUIPageModel
 	private ArrayList<ItemButtonComponent> playerUnityGenBtns;
 	private int page = 0;//index of the current page of UnitGen buttons the player is looking at
 	private int totalPages;
-	
+
+	private LabelComponent instructionsLabel;
 	private ItemButtonComponent genBtnTemplate;//clones of this component are used to create each UnityGen button
 	private LabelComponent hoverLabelTemplate;//clones of this component are used to create each UnitGen button label
 	private ButtonComponent nextPageBtn;
 	private ButtonComponent prevPageBtn;
 	private LabelComponent pageLabel;
 	
-	public UnityPageModel(final HoloGUIPlugin plugin, GUIPage guiPage, final Player player, final String teleportMessage)
+	public UnityPageModel(final HoloGUIPlugin plugin, GUIPage guiPage, final Player player, final String teleportMessage, final String noGensMessage)
 	{
 		super(plugin, guiPage, player);
 		
 		playerUnityGenBtns = new ArrayList<ItemButtonComponent>();
-		
+
+		instructionsLabel = (LabelComponent)guiPage.getComponent("instructions-label");
 		genBtnTemplate = (ItemButtonComponent)guiPage.getComponent("unitygen-btn-template");
 		hoverLabelTemplate = (LabelComponent)guiPage.getComponent("hover-label-template");
 		nextPageBtn = (ButtonComponent)guiPage.getComponent("next-page-btn");
@@ -130,7 +132,7 @@ public class UnityPageModel extends PlayerGUIPageModel
 							tpLocation.setY(tpLocation.getY() + 1);
 							player.teleport(tpLocation);
 							
-							player.sendMessage(teleportMessage);
+							player.sendMessage(ChatColor.translateAlternateColorCodes('&', teleportMessage));
 						}
 					});
 
@@ -175,6 +177,16 @@ public class UnityPageModel extends PlayerGUIPageModel
 				{
 					playerGUIPage.renderComponent(nextPageBtn);
 					playerGUIPage.renderComponent(pageLabel);
+				}
+
+				if(playerUnityGenBtns.size() == 0)//The player hasn't placed any UnityGen blocks, display the no unity gens message
+				{
+					playerGUIPage.removeComponent("instructions-label");//remove the instructions
+
+					LabelComponent noGensLabel = instructionsLabel.clone();
+					noGensLabel.setLines(new String[]{ ChatColor.translateAlternateColorCodes('&', noGensMessage) });
+
+					playerGUIPage.renderComponent(noGensLabel);//render the label
 				}
 										
 				renderButtons();

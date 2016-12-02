@@ -1,1 +1,3 @@
 teleport-message: "&aYou have been teleported to your UnityGen."
+
+no-unity-gens-msg: "&c&lYou haven't placed any UnityGen blocks yet. Use /ug for a list of UnityGen commands."

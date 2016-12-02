@@ -5,7 +5,7 @@ unitygen-page:
       type: "image"
       width: 75
       height: 20
-      image-src: "unitygen-logo.gif"
+      image-src: "logo.gif"
       position:
         x: 0.1
         y: 1.3
@@ -72,7 +72,7 @@ unitygen-page:
     page-label:
       type: "label"
       hidden: true
-      label-disance: 8
+      label-distance: 8
       text:
         - "&lPage: $model.page();/$model.totalPages();"
       position:

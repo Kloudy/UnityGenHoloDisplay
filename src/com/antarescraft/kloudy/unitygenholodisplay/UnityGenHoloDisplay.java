@@ -15,6 +15,8 @@ public class UnityGenHoloDisplay extends HoloGUIPlugin
 		
 		configManager = new ConfigManager(this);
 		configManager.loadConfigValues();
+
+		copyResourceConfigs(true);
 		
 		getHoloGUIApi().hookHoloGUIPlugin(this);//hook this plugin into HoloGUIApi
 		loadGUIPages();//load the yaml files in the plugin folder into HoloGUIApi
