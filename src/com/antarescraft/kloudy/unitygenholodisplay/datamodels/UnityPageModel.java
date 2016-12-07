@@ -90,7 +90,7 @@ public class UnityPageModel extends PlayerGUIPageModel
 			}
 		});
 		
-		guiPage.registerPageLoadHandler(new GUIPageLoadHandler()
+		guiPage.registerPageLoadHandler(player, new GUIPageLoadHandler()
 		{
 			@Override
 			public void onPageLoad(PlayerGUIPage _playerGUIPage)
@@ -146,13 +146,13 @@ public class UnityPageModel extends PlayerGUIPageModel
 
 							ComponentPosition btnPosition = unityGenBtn.getPosition();
 							ComponentPosition labelPosition = new ComponentPosition(btnPosition.getX(), btnPosition.getY() - 0.22);
-							String[] text = new String[]{ String.format("%s: (%d, %d, %d)", world.getName(), x, y, z) };
+							String[] text = new String[]{ "&e&l" + String.format("%s: (%d, %d, %d)", world.getName(), x, y, z) };
 
 							LabelComponent infoLabel = hoverLabelTemplate.clone();
 							infoLabel.setId(unityGenBtn.getId() + "-label");
 							infoLabel.setPosition(labelPosition);
 							infoLabel.setLines(text);
-							infoLabel.setLabelDistance(4);
+							infoLabel.setLabelDistance(3.75);
 
 							playerGUIPage.renderComponent(infoLabel);
 						}

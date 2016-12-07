@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.antarescraft.kloudy.unitygenholodisplay</groupId>
    <artifactId>UnityGenHoloDisplay</artifactId>
-   <version>1.0</version>
+   <version>1.0.1</version>
     <properties>
      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    </properties>
@@ -29,7 +29,7 @@
      	<groupId>com.antarescraft.kloudy.hologuiapi</groupId>
      	<artifactId>HoloGUIApi</artifactId>
      	<scope>provided</scope>
-     	<version>1.0</version>
+     	<version>1.0.2</version>
      </dependency>
      <dependency>
      	<groupId>me.charlie.unitygen</groupId>
