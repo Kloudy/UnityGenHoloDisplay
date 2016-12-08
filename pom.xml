@@ -80,19 +80,7 @@
                <goal>shade</goal>
              </goals>
              <configuration>
-               <finalName>UnityGenHoloDisplay</finalName>
-               <relocations>
-                 <relocation>
-                   <pattern>com.antarescraft.kloudy.plugincore</pattern>
-                   <shadedPattern>com.antarescraft.kloudy.unitygenholodisplay.plugincore</shadedPattern>
-                 </relocation>
-               </relocations>
-               <artifactSet>
-                <excludes>
-                  <exclude>org.json</exclude>
-                </excludes>
-              </artifactSet>
-               <outputDirectory>D:\Tim\Spigot 1.11 Server\plugins</outputDirectory>
+               <outputFile>${plugin-folder}/UnityGenHoloDisplay.jar</outputFile>
              </configuration>
            </execution>
          </executions>
