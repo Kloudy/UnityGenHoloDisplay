@@ -1,5 +1,9 @@
 target/
 bin/
 lib/
+.settings/
 .idea/
+.classpath
+.project
+plugin-page-markdown.txt
 UnityGenHoloDisplay.iml
