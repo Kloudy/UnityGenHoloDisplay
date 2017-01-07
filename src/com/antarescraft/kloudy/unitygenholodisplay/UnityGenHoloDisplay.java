@@ -11,7 +11,7 @@ public class UnityGenHoloDisplay extends HoloGUIPlugin
 	@Override
 	public void onEnable()
 	{
-		setMinSupportedApiVersion("1.0.2");
+		setMinSupportedApiVersion("1.0.7");
 		checkMinApiVersion();
 		
 		saveDefaultConfig();
