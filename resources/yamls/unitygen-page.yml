@@ -19,30 +19,6 @@ unitygen-page:
         x: 0.1
         y: 0.7
 
-    hover-label-template:
-      type: "label"
-      hidden: true
-      text:
-        - ""
-      position:
-        x: 0
-        y: 0
-
-    unitygen-btn-template:
-      type: "item"
-      item-id: AIR
-      always-show-label: true
-      clickable: true
-      hidden: true
-      onclick-sound: "BLOCK_PORTAL_TRAVEL"
-      rotation:
-        x: 0
-        y: 0
-        z: 0
-      position:
-        x: 0
-        y: 0
-
     next-page-btn:
       type: "button"
       hidden: true
