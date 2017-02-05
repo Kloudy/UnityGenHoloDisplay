@@ -189,12 +189,12 @@ public class UnityPageModel extends PlayerGUIPageModel
 
 				if(playerUnityGenBtns.size() == 0)//The player hasn't placed any UnityGen blocks, display the no unity gens message
 				{
-					playerGUIPage.removeComponent("instructions-label");//remove the instructions
+					//playerGUIPage.removeComponent("instructions-label");//remove the instructions
 
-					LabelComponent noGensLabel = instructionsLabel.clone();
-					noGensLabel.setLines((ArrayList<String>)Arrays.asList(new String[]{ ChatColor.translateAlternateColorCodes('&', noGensMessage) }));
+					//LabelComponent noGensLabel = instructionsLabel.clone();
+					instructionsLabel.setLines((ArrayList<String>)Arrays.asList(new String[]{ ChatColor.translateAlternateColorCodes('&', noGensMessage) }));
 
-					playerGUIPage.renderComponent(noGensLabel);//render the label
+					//playerGUIPage.renderComponent(noGensLabel);//render the label
 				}
 										
 				renderButtons();
